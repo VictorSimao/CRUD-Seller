@@ -1,0 +1,34 @@
+{% extends "marketplace.html" %}
+
+{% block title %}Config{% endblock %}
+
+{% block content %}
+<h1>Configurações Marketplaces</h1>
+<a href="form">Nova config</a>
+<br>
+<br>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Apis</th>
+            <th>Keys</th>
+            <th>Endpoints</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in model %}
+        <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.apis}}</td>
+            <td>{{item.keys}}</td>
+            <td>{{item.endpoints}}</td>
+            <td><a href="form/?id={{item.id}}">Update</a></td>
+            <td><a href="delete/?id={{item.id}}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

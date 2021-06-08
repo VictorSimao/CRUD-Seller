@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market {% block title %}Marketplace{% endblock %}</title>
+</head>
+
+<body>
+    <header>
+        <div id="menu">
+            <ul>
+                <li>
+                    <a href='/marketplace'>Marketplaces</a>
+                </li>
+                <li>
+                    <a href='/marketplace/configs'>Configurações</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    {% block content %}
+    <h1>Marketplaces</h1>
+    <a href="form">Novo Marketplace</a>
+    <br>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in model %}
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td><a href="form?id={{item.id}}">Update</a></td>
+                <td><a href="delete?id={{item.id}}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}
+</body>
+
+</html>

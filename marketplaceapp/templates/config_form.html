@@ -1,0 +1,20 @@
+{% extends 'marketplace.html' %}
+{% block content %}
+
+<h1>Configuração Marketplace</h1>
+<form action="save">
+    id: <input type="text" name="id" id="id" value="{%if data %}{{data.id}}{%endif%}" readonly><br />
+    apis: <input type="text" name="apis" id="apis" value="{%if data %}{{data.apis}}{%endif%}"> <br />
+    keys: <input type="text" name="keys" id="keys" value="{%if data %}{{data.keys}}{%endif%}"> <br />
+    endpoints: <input type="text" name="endpoints" id="endpoints" value="{%if data %}{{data.endpoints}}{%endif%}"> <br />
+    <label for="marketplaces">marketplace:</label>
+    <select id="marketplaces" name="marketplace">
+    {% for item in data_market %} 
+        <option value="{{item.id}}">{{item.name}}</option>
+    {% endfor %}
+    </select>
+    <br />
+    <input type="submit" value="Save">
+</form>
+
+{% endblock %}
