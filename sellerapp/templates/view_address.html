@@ -1,0 +1,17 @@
+{% extends 'home.html' %}
+{% block content %}
+
+<body>
+    <div class="col-8 m-auto pt-4 pb-2 text-center">
+        <div class="col-8 m-auto pt-4 pb-2 text-center">
+            <a href="/sellerapp/" class="btn btn-outline-dark">Voltar</a>
+        </div>
+        <div class="col-8 m-auto pt-4 pb-2 text-center">
+            <strong>Estado: </strong>{{db.state}}<br>
+            <strong>Cidade: </strong>{{db.city}}<br>
+            <strong>Bairro: </strong>{{db.district}}<br>
+            <strong>Rua: </strong>{{db.street}}<br>
+            <strong>Numero: </strong>{{db.number}}<br>
+        </div>    
+    </div>
+{% endblock %}

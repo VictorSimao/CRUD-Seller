@@ -1,7 +1,7 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
-from .forms import sellersForm
-from .models import Sellers
+from .forms import sellersForm, AddressForm
+from .models import Sellers, Address
 
 
 def home(request):
@@ -64,3 +64,66 @@ def delete(request, pk):
         db = Sellers.objects.get(pk=pk)
         db.delete()
         return redirect('index')
+
+
+def address(request):
+    return render(request, 'address.html')
+
+
+def index_address(request):
+    data: dict = {}
+    search = request.GET.get('search')
+    if search:
+        data['db'] = Address.objects.filter(street__icontains=search)\
+            or Address.objects.filter(district__icontains=search)\
+            or Address.objects.filter(city__icontains=search)\
+            or Address.objects.filter(state__icontains=search)
+    else:
+        data['db'] = Address.objects.all()
+        all = Address.objects.all()
+        paginator = Paginator(all, 5)
+        pages = request.GET.get('page')
+        data['db'] = paginator.get_page(pages)
+    data['index_address'] = AddressForm
+    return render(request, 'index_address.html', data)
+
+
+def form_address(request):
+    data = {}
+    data['form_address'] = AddressForm
+    return render(request, 'form_address.html', data)
+
+
+def create_address(request):
+    form = AddressForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('index_address')
+
+
+def view_address(request, pk):
+    data = {}
+    data['db'] = Address.objects.get(pk=pk)
+    return render(request, 'view_address.html', data)
+
+
+def edit_address(request, pk):
+    data = {}
+    data['db'] = Address.objects.get(pk=pk)
+    data['form_address'] = AddressForm(instance=data['db'])
+    return render(request, 'form_address.html', data)
+
+
+def update_address(request, pk):
+    data: dict = {}
+    data['db'] = Address.objects.get(pk=pk)
+    form = AddressForm(request.POST or None, instance=data['db'])
+    if form.is_valid():
+        form.save()
+    return redirect('index_address')
+
+
+def delete_address(request, pk):
+        db = Address.objects.get(pk=pk)
+        db.delete()
+        return redirect('index_address')
