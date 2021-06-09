@@ -1,0 +1,32 @@
+{% extends 'home.html' %}
+{% block content %}
+    <div class="col-8 m-auto pt-3 pb-2 text-center">
+        <h1>Seller</h1>
+    </div>
+
+    <div class="col-8 m-auto pt-4 pb-2 text-center">
+        <div class="col-8 m-auto pt-4 pb-2 text-center">
+            <a href="/sellerapp/" class="btn btn-outline-dark">Home</a>
+            <a href="/sellerapp/form_address" class="btn btn-outline-dark">Voltar</a>
+        </div>
+    </div>
+    <div class=" m-auto text-center" id="result"></div>
+    <form class="form-control form-control-lg" name="form" id="form"
+        action="{% if db %}/sellerapp/update_address/{{db.id}}/{% else %}/sellerapp/create_address/{% endif %}" method="post">
+        {% csrf_token%}
+        <div class="col-12 m-auto pt-6 pb-4 text-center">
+            <label for="state">Estado</label>
+            <div><i class="form-group mt-6 col-12" id="state" placeholder="Estado:"> {{form_address.state}}</i></div>
+            <label for="city">Cidade</label>
+            <div><i class="form-group mt-6    col-12" id="city" placeholder="Cidade:"> {{form_address.city}}</i></div>
+            <label for="district">Bairro</label>
+            <div><i class="form-group mt-6    col-12" id="district" placeholder="Bairro:"> {{form_address.district}}</i></div>
+            <label for="street">Rua</label>
+            <div><i class="form-group mt-6    col-12" id="street" placeholder="Rua:"> {{form_address.street}}</i></div>
+            <label for="number">Numero</label>
+            <div><i class="form-group mt-6    col-12" id="number" placeholder="Numero:"> {{form_address.number}}</i></div>
+            <div><br></div>
+            <input type="submit" class="btn btn-outline-dark" value="Salvar">
+        </div>
+    </form>
+{% endblock %}
