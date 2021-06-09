@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <title>Visualização</title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!--css's-->
+    <style>
+        /* Remove the navbar's default margin-bottom and rounded borders */ 
+        .navbar {
+          background-color: #0c29d0;
+        }
+        .jumbotron {
+          background-color: #f2f2f2;
+          padding: 50px;
+        }
+        /* Add a gray background color and some padding to the footer */
+        footer {
+          background-color: #f2f2f2;
+          padding: 25px;
+        }
+      </style>
+ 
+      <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <ul class="nav justify-content-center">
+              <li class="nav-item">
+                  <a class="nav-link active" href="index">Vendedores</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="indexMarketplace">Marketeplaces</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-light" type="submit">Search</button>
+            </form>
+        </div>
+      </nav>
+  </head>
+<body>
+  <div class="page-market-place">
+
+    {% block content %}
+    <div class="jumbotron jumbotron-fluid"></div>
+      <div class="container">
+        <h1 class="display-4">Seller app</h1>
+          <p>
+              Testo só para encher linguiça!!! <a href="https://https://github.com/alejcarvalho/CRUD-Seller/tree/victorsimao"> Seller Github </a>  <br>
+          </p>
+      </div>
+  </div>
+    {% endblock %}
+<!--FOOTER-->
+</div>
+    <footer class="container-fluid text-center">
+<article><p>&copy; todos os direitos quase reservados Tech Start</p></article>
+  </footer>
+
+  </body>
+        <!--js's-->
+    <script src="{% static 'JavaScript.js' %}"></script>
+</html>

@@ -1,11 +1,8 @@
-from django.contrib import admin
+from django.forms import ModelForm
 from .models import Sellers
 
 
-class sellersAdmin(admin.ModelAdmin):
+class sellersForm(ModelForm):
      class Meta:
         model = Sellers
         fields = ['name', 'cpf', 'email', 'phone']
-
-
-admin.site.register(Sellers)

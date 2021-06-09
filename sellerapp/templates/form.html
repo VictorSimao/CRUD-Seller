@@ -1,0 +1,31 @@
+{% extends 'home.html' %}
+{% block content %}
+    <div class="col-8 m-auto pt-3 pb-2 text-center">
+        <h1>Seller</h1>
+    </div>
+
+    <div class="col-8 m-auto pt-4 pb-2 text-center">
+        <div class="col-8 m-auto pt-4 pb-2 text-center">
+            <a href="/sellerapp/" class="btn btn-outline-dark">Home</a>
+            <a href="/sellerapp/form" class="btn btn-outline-dark">Voltar</a>
+        </div>
+    </div>
+    <div class=" m-auto text-center" id="result"></div>
+    <form class="form-control form-control-lg" name="form" id="form"
+        action="{% if db %}/sellerapp/update/{{db.id}}/{% else %}/sellerapp/create/{% endif %}" method="post">
+        {% csrf_token%}
+        <div class="col-12 m-auto pt-6 pb-4 text-center">
+            <label for="nome">Nome</label>
+
+            <div><i class="form-group mt-6 col-12" id="nome" placeholder="Nome:"> {{form.name}}</i></div>
+            <label for="nome">CPF</label>
+            <div><i class="form-group mt-6    col-12" id="CNPJ" placeholder="CNPJ:"> {{form.cpf}}</i></div>
+            <label for="nome">Email</label>
+            <div><i class="form-group mt-6    col-12" id="Email" placeholder="Email:"> {{form.email}}</i></div>
+            <label for="nome">Telefone</label>
+            <div><i class="form-group mt-6    col-12" id="Telefone" placeholder="Telefone:"> {{form.phone}}</i></div>
+            <div><br></div>
+            <input type="submit" class="btn btn-outline-dark" value="Salvar">
+        </div>
+    </form>
+{% endblock %}
