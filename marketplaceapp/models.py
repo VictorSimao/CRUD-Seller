@@ -7,7 +7,8 @@ class ConfigMarketplace(models.Model):
     endpoints = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.apis
+        return f"{self.apis} - {self.keys} - {self.endpoints}"
+
 
 class Marketplace(models.Model):
     name = models.CharField(max_length=70)
