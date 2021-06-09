@@ -1,13 +1,23 @@
 {% extends 'marketplace.html' %}
 {% block content %}
+    <div class="col-8 m-auto pt-3 pb-2 text-center">
+        <h1>Marketplace</h1>
+    </div>
 
-    <h1>Marketplace</h1>
-    <form action="/marketplace/save" name="form"> 
-        id: <input type="text" name="id" id="id" value="{%if data %}{{data.id}}{%endif%}" readonly><br />
-        name: <input type="text" name="name" id="name" value="{%if data %}{{data.name}}{%endif%}"> <br />
-        </br>
-        <input type="submit" value="Save">
+    <div class="col-8 m-auto pt-4 pb-2 text-center">
+        <div class="col-8 m-auto pt-4 pb-2 text-center">
+            <a href="/marketplace/" class="btn btn-outline-dark">Voltar</a>
+        </div>
+    </div>
+    <div class=" m-auto text-center" id="result"></div>
+    <form class="form-control form-control-lg" name="form" id="form" action="/marketplace/save">
+        {% csrf_token%}
+        <div class="col-12 m-auto pt-6 pb-4 text-center">
+            <!-- <label for="name">Nome</label> -->
+            <div>Nome: <input type="text" name="name" id="name" value="{%if data %}{{data.name}}{%endif%}"></div>
+            <input type="hidden" name="id" id="id" value="{%if data %}{{data.id}}{%endif%}">
+            <div><br></div>
+            <input type="submit" class="btn btn-outline-dark" value="Salvar">
+        </div>
     </form>
-    </br>
-    
 {% endblock %}
