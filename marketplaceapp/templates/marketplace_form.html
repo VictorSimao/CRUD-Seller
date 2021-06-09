@@ -1,0 +1,13 @@
+{% extends 'marketplace.html' %}
+{% block content %}
+
+    <h1>Marketplace</h1>
+    <form action="/marketplace/save" name="form"> 
+        id: <input type="text" name="id" id="id" value="{%if data %}{{data.id}}{%endif%}" readonly><br />
+        name: <input type="text" name="name" id="name" value="{%if data %}{{data.name}}{%endif%}"> <br />
+        </br>
+        <input type="submit" value="Save">
+    </form>
+    </br>
+    
+{% endblock %}

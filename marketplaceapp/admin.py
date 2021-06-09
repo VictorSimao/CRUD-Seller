@@ -1,3 +1,6 @@
 from django.contrib import admin
+from marketplaceapp.models import Marketplace, ConfigMarketplace
 
-# Register your models here.
+
+admin.site.register(Marketplace)
+admin.site.register(ConfigMarketplace)

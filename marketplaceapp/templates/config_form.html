@@ -1,0 +1,39 @@
+{% extends 'marketplace.html' %}
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="conteudo-navbar">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/marketplace">
+                  Marketplace
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/marketplace/configs">
+                  Configurações
+                </a>
+            </li>
+        </ul>           
+    </div>
+</nav>
+<form action="save">
+    id: <input type="text" name="id" id="id" value="{%if data %}{{data.id}}{%endif%}" readonly><br />
+    apis: <input type="text" name="apis" id="apis" value="{%if data %}{{data.apis}}{%endif%}"> <br />
+    keys: <input type="text" name="keys" id="keys" value="{%if data %}{{data.keys}}{%endif%}"> <br />
+    endpoints: <input type="text" name="endpoints" id="endpoints" value="{%if data %}{{data.endpoints}}{%endif%}"> <br />
+    {% if data %} 
+        Marketplace: <input type="text" name="marketplace" id="marketplace" value="{%if data %}{{data.marketplace}}{%endif%}" readonly><br />
+    {% endif %}
+    {% if not data %} 
+        <label for="marketplaces">marketplace:</label>
+        <select id="marketplaces" name="marketplace">
+        {% for item in data_market %} 
+            <option value="{{item.id}}">{{item.name}}</option>
+        {% endfor %}
+        </select>
+    {% endif %}
+    <br />
+    <input type="submit" value="Save">
+</form>
+
+{% endblock %}
